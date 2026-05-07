@@ -10,4 +10,10 @@ class UserController extends Controller
         $calcolo = 5 + 5;
         return $calcolo;
     }
+
+    public function getData (Request $request) {
+
+        return 'Dati ricevuti: ' . $request->input('data');
+    }
+
 }

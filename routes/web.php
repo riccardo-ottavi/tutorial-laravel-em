@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 
 Route::get('/prova', [UserController::class, 'calcTotal']);
+Route::post('/prova', [UserController::class, 'getData']);
