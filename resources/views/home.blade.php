@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-@include('partials.head', ['pageTitle' => 'Homepage', 'metaTitle' => 'The Homepage for my Laravel tutorial site'])
+@section('content')
+<h1>Homepage</h1>
+<p>Questo è il contenuto della Homepage</p>
+@endsection
 
-<body>
-    @include('partials.navbar')
-    <h1>Homepage</h1>
-</body>
-</html>
