@@ -67,3 +67,8 @@ Route::get('/posts/delete/{id}', function ($id) {
 
     return view('posts.delete', ['message' => $message]);
 })->name('posts.delete');
+
+Route::get('/post/{id}', function($id){
+    $post = Post::findOrFail($id);
+    return view('posts.show', ['post' => $post]);
+})->name('post.show');
