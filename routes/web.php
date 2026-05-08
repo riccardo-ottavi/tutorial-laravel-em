@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -72,3 +74,21 @@ Route::get('/post/{id}', function($id){
     $post = Post::findOrFail($id);
     return view('posts.show', ['post' => $post]);
 })->name('post.show');
+
+Route::put('/post/{$id}', function (Request $request, $id){
+    $post = Post::findOrFail($id);
+
+    $post->title = $request->input('title');
+    $post->content = $request->input('content');
+    $post-> save();
+    
+    return redirect()->route('post.show', ['id' => $post->id])->with('success', 'Post aggiornato con successo');
+})->name('post.update');
+
+Route::delete('/post/{$id}', function ($id){
+    $post = Post::findOrFail($id);
+
+    $post->delete();
+    
+    return redirect()->route('post.index')->with('success', 'Post eliminato con successo');
+})->name('post.delete');
