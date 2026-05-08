@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,9 +33,8 @@ Route::get('/dashboard', function () {
 //Route::post('/dashboard', [UserController::class, 'getData']);
 
 Route::get('/posts', function () {
-    $posts = Post::all();
-
-    return view('posts.index', ['posts' => $posts]);
+    $post = Post::factory()->create();
+    return $post;
 })->name('posts.index');
 
 Route::get('/posts/create', function () {
